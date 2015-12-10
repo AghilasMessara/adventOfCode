@@ -1,0 +1,24 @@
+input = """""".split('\n')
+niceties = 0
+for item in input:
+	previous = ''
+	previous2 = ''
+	hasDouble = False
+	pairs
+	for letter in item:
+		current = letter
+		if previous2 == current:
+			hasDouble = True
+		if (previous + current) in pairs:
+			pairs[previous + current] = pairs[previous + current] + 1
+		else:
+			pairs[previous + current] = 1
+		previous2 = previous
+		previous = current
+	print "pairs " + pairs
+	if (hasDouble):
+		niceties = niceties + 1
+		print """Nice Word mofo!!"""
+	else:
+		print """Not PC broooo!"""
+print "Nice words: %s", niceties

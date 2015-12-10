@@ -1,0 +1,36 @@
+input = list("""^>""")
+class Point:
+  def __init__(self, x, y):
+    self.x, self.y = x, y
+
+  def __str__(self):
+    return "({}, {})".format(self.x, self.y)
+
+  def __neg__(self):
+    return Point(-self.x, -self.y)
+
+  def __add__(self, point):
+    return Point(self.x+point.x, self.y+point.y)
+
+  def __sub__(self, point):
+    return self + -point
+    
+  def __eq__(self, other):
+        if isinstance(other, self.__class__):
+            return self.x == other.x & self.y == other.y
+        else:
+            return False
+  def __hash__(self):
+    return hash(self.x) ^ hash(self.y)
+
+lastPosition = Point(0, 0)
+route = {lastPosition: 1}
+
+for direction in input:
+	if direction == '^':
+		lastPosition = lastPosition + Point(1, 0)
+	elif direction == '>':
+		lastPosition = lastPosition + Point(0, 1)
+	print lastPosition
+	route[lastPosition] = route[lastPosition] + 1
+print route
